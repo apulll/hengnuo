@@ -1,0 +1,1 @@
+<?php exit();?>a:1:{s:3:"ext";a:1:{s:7:"content";s:46:"Powered By  copyright © , All right reserved.";}}
