@@ -1,0 +1,54 @@
+<!-- php:$title = $rs.title.' - '.$cate_rs.title.' - '.$page_rs.title -->
+<!-- include tpl=head title=$title menutitle=$page_rs.title -->
+<div class="banner"{if $page_rs.banner} style="background-image:url('{$page_rs.banner.gd.auto}')"{/if}></div>
+<div class="main clearfix">
+	<div class="left">
+		<!-- include tpl=block_catelist -->
+		<!-- include tpl=block_contact -->
+	</div>
+	<div class="right">
+		<div class="pfw">
+			<div class="title">
+				<h3>{$cate_rs ? $cate_rs.title : $page_rs.title}</h3>
+				<span class="breadcrumbs">
+					Your Position：
+					<a href="{$sys.url}" title="{$config.title}">Home</a>
+					<span class="arrow">&gt;</span> <a href="{$page_rs.url}" title="{$page_rs.title}">{$page_rs.title}</a>
+					<!-- if $cate_rs -->
+					<span class="arrow">&gt;</span> <a href="{$cate_rs.url}" title="{$cate_rs.title}">{$cate_rs.title}</a>
+					<!-- /if -->
+				</span>
+			</div>
+			<div class="detail">
+				<h1>{$rs.title}</h1>
+				<div class="date_hits_tags">
+					Release date：<span>{func date d-m-y $rs.dateline}</span>&nbsp;&nbsp;&nbsp;
+					Browse times：<span class="hits">{$rs.hits}</span>
+					
+				</div>
+				<div class="content">{$rs.content}</div>
+				<div class="np">
+					<p>The previous topic：
+						<!-- php:$prev = phpok_prev($rs) -->
+						<!-- if $prev -->
+						<a href="{$prev.url}" title="{$prev.title}">{$prev.title}</a>
+						<!-- else -->
+						None
+						<!-- /if -->
+					</p>
+					<p>The next topic：
+						<!-- php:$next = phpok_next($rs) -->
+						<!-- if $next -->
+						<a href="{$next.url}" title="{$next.title}">{$next.title}</a>
+						<!-- else -->
+						None
+						<!-- /if -->
+					</p>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- include tpl=foot -->

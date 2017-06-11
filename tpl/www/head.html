@@ -1,0 +1,22 @@
+<!-- head title=$title css="css/style.css,artdialog.css" js="js/global.js,jquery.artdialog.js" html5=true -->
+<body>
+<header class="clearfix">
+	<div class="logo"><a href="{$sys.url}" title="{$config.title}"><img src="{$config.logo}" alt="{$config.title}" /></a></div>
+</header>
+<nav class="menu">
+<ul>
+	<!-- php:$list = phpok('menu') -->
+	<!-- loop from=$list.rslist key=$key value=$value id=list_id -->
+	<li{if $menutitle == $value.title} class="current"{/if}{if !$list_id.index} style="margin-left:4px;"{/if}>
+		<a href="{$value.url}" title="{$value.title}" target="{$value.target}">{$value.title}</a>
+		<!-- if $value.sonlist -->
+		<ul>
+			<!-- loop from=$value.sonlist key=$k value=$v -->
+			<li><a href="{$v.url}" title="{$v.title}" target="{$v.target}">{$v.title}</a></li>
+			<!-- /loop -->
+		</ul>
+		<!-- /if -->
+	</li>
+	<!-- /loop -->
+</ul>
+</nav>

@@ -1,0 +1,72 @@
+<!-- php:$title = $cate_rs ? $cate_rs.title.' - '.$page_rs.title : $page_rs.title -->
+<!-- include tpl=head title=$title menutitle=$page_rs.title -->
+<div class="banner"{if $page_rs.banner} style="background-image:url('{$page_rs.banner.gd.auto}')"{/if}></div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#postform").submit(function(){
+		
+		$(this).ajaxSubmit({
+			'url':api_url('post','save'),
+			'type':'post',
+			'dataType':'json',
+			'success':function(rs){
+				if(rs.status == 'ok'){
+					$.dialog.alert('Feel you submit the message, we will process your message as soon as possible',function(){
+						$.phpok.reload();
+					},'succeed');
+				}else{
+					$.dialog.alert(rs.content);
+					return false;
+				}
+			}
+		});
+		return false;
+	});
+});
+</script>
+<div class="main clearfix">
+	<div class="left">
+		<!-- include tpl=block_contact -->
+	</div>
+	<div class="right">
+		<div class="pfw">
+			<div class="title">
+				<h3>{$page_rs.title}</h3>
+				<span class="breadcrumbs">
+					Your position：
+					<a href="{$sys.url}" title="{$config.title}">Home</a>
+					<span class="arrow">&gt;</span> <a href="{$page_rs.url}" title="{$page_rs.title}">{$page_rs.title}</a>
+				</span>
+			</div>
+			<div class="message_post">
+			<form method="post" class="form" id="postform">
+			<input type="hidden" name="id" value="{$page_rs.identifier}" />
+			<!-- php:$list = phpok('_fields','pid='.$page_rs.id.'&fields_format=1&in_title=1') -->
+			<!-- loop from=$list key=$key value=$value id=$tmpid -->
+			<div class="table clearfix" id="form_{$value.identifier}">
+				<div class="l">{$value.title}：</div>
+				<div class="r">{$value.html}</div>
+			</div>
+			<!-- /loop -->
+			<div class="table clearfix">
+				<div class="l">&nbsp;</div>
+				<div class="r"><input type="submit" value="Submit" class="large button blue" /></div>
+			</div>
+			</form>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".thumb").mouseover(function(){
+		var pid = $(this).attr('data-id');
+		var thumb = $(this).attr('data');
+		$("#product_"+pid).attr("src",thumb);
+		$(".thumb[data-id="+pid+"]").removeClass("hover");
+		$(this).addClass('hover');
+	});
+});
+</script>
+<!-- include tpl=foot -->
