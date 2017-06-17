@@ -912,4 +912,27 @@ function phpok_call_api_url($phpok,$param='',$tpl='')
 	$ext .= "token=".rawurlencode($token);
 	return api_url('index','phpok',$ext,true);
 }
+
+//
+function currentDefine($list)
+{
+	// $placeholder = 'http://iph.href.lu/220x220?text=暫無索羅圖';
+	// print_r($list);
+	// if(!empty($list)) {
+	// 	return $list['gd']['thumb'];
+	// }else {
+	// 	return $placeholder;
+	// }
+	$tmp = 'http://iph.href.lu/220x220?text=No Image&bg=fff&fg=ececec';
+	if(!empty($list)) {
+	
+	foreach($list AS $key=>$value)
+		{
+			$tmp = $value['gd']['thumb'];
+		}
+	
+	}
+	return $tmp;
+}
+
 ?>

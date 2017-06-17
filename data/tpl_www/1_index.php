@@ -32,11 +32,6 @@ $(document).ready(function(){
 			<?php $thumb = current($value['thumb']);?>
 			<li>
 				<div class="img"><a href="<?php echo $value['url'];?>" title="<?php echo $value['title'];?>"><img src="<?php echo $thumb['gd']['thumb'];?>" border="0" id="product_<?php echo $value['id'];?>" /></a></div>
-				<div class="imglist clearfix">
-					<?php $tmpid2["num"] = 0;$value['thumb']=is_array($value['thumb']) ? $value['thumb'] : array();$tmpid2["total"] = count($value['thumb']);$tmpid2["index"] = -1;foreach($value['thumb'] AS $k=>$v){ $tmpid2["num"]++;$tmpid2["index"]++; ?>
-					<div class="thumb<?php if(!$tmpid2['index']){ ?> hover<?php } ?>" data="<?php echo $v['gd']['thumb'];?>" data-id="<?php echo $value['id'];?>"><img src="<?php echo $v['ico'];?>" border="0" /></div>
-					<?php } ?>
-				</div>
 				<h4><a href="<?php echo $value['url'];?>" title="<?php echo $value['title'];?>"><?php echo $value['title'];?></a></h4>
 			</li>
 			<?php } ?>

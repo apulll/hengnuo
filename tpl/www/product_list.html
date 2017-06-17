@@ -22,14 +22,9 @@
 			</div>
 			<ul class="product clearfix" style="padding-left:7px;">
 				<!-- loop from=$rslist key=$key value=$value id=$tmpid -->
-				<!-- php:$thumb = current($value.thumb) -->
+				<!-- php:$thumb = currentDefine($value.thumb) -->
 				<li>
-					<div class="img"><a href="{$value.url}" title="{$value.title}"><img src="{$thumb.gd.thumb}" border="0" id="product_{$value.id}" /></a></div>
-					<div class="imglist clearfix">
-						<!-- loop from=$value.thumb key=$k value=$v id=$tmpid2 -->
-						<div class="thumb{if !$tmpid2.index} hover{/if}" data="{$v.gd.thumb}" data-id="{$value.id}"><img src="{$v.ico}" border="0" /></div>
-						<!-- /loop -->
-					</div>
+					<div class="img"><a href="{$value.url}" title="{$value.title}"><img src="{$thumb}" border="0" id="product_{$value.id}" /></a></div>
 					<h4><a href="{$value.url}" title="{$value.title}">{$value.title}</a></h4>
 				</li>
 				<!-- /loop -->
